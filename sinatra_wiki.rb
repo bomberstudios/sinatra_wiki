@@ -1,13 +1,9 @@
-%w(rubygems sinatra erb rdiscount thin).each do |lib|
-  require lib
-end
-Dir["lib/**/*"].each do |lib|
+%w(rubygems sinatra erb rdiscount thin lib/slugalizer).each do |lib|
   require lib
 end
 
 before do
   content_type 'text/html', :charset => 'utf-8'
-  @pages = Dir["public/**/*.txt"]
 end
 
 def create_file file_path, contents=""
@@ -17,6 +13,7 @@ def create_file file_path, contents=""
 end
 
 get '/' do
+  @pages = Dir["public/**/*.txt"]
   erb :home
 end
 get '/:slug' do
@@ -27,7 +24,7 @@ get '/:slug' do
     erb :page
   else
     create_file file_path
-    redirect "/#{page_name}/edit"
+    redirect "/#{@page_name}/edit"
   end
 end
 get '/:slug/edit' do
