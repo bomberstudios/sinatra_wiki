@@ -1,0 +1,5 @@
+<h2>Page list</h2>
+
+<% @pages.each do |page| %>
+  <li><a href="/<%= File.basename(page,".txt") %>"><%= File.basename(page,".txt") %></a></li>
+<% end %>

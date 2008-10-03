@@ -1,0 +1,9 @@
+<h1>Edit <%= @page_name %></h1>
+
+<form method="POST">
+  <input type="text" name="title" value="<%= @page_name %>" id="title" />
+  <br>
+  <textarea name="body" rows="40" cols="100" style="font-family: Consolas; font-size: 13px"><%= @content %></textarea>
+  <br>
+  <input type="submit" name="Enviar" value="Enviar" id="Enviar" accesskey="s" />
+</form>
