@@ -1,11 +1,11 @@
 <html>
   <head>
-    <title>Sinatra Wiki<%= " - " + @page_name unless @page_name.nil? %></title>
+    <title>Sinatra Wiki<%= " - " + @page.name unless @page.name.nil? %></title>
   </head>
   <body>
     <div>
-      <h1>wikiwiki</h1>
-      <a href="/" accesskey="h">Home</a><%= " | <a href=\"/#{@page_name}/edit\" accesskey=\"e\">Edit</a>" unless @page_name.nil? %>
+      <h1>Sinatra Wiki</h1>
+      <a href="/" accesskey="h">Home</a>
     </div>
     <%= yield %>
   </body>
