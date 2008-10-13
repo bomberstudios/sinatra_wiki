@@ -28,7 +28,7 @@ end
 get '/:slug/edit' do
   authenticate_or_request_with_http_basic do |user_name, password|
     user_name == CONFIG[:username] && Digest::SHA1.hexdigest(password) == CONFIG[:password]
-  end
+  end if CONFIG[:use_auth]
   @page = Page.new(params[:slug])
   erb :edit
 end
