@@ -5,7 +5,11 @@ Dir["lib/**/*"].each do |lib|
   require lib
 end
 
-CONFIG = YAML::load(File.read('config.yml')).to_hash
+configure do
+  @config = YAML::load(File.read('config.yml')).to_hash.each do |k,v|
+    set k, v
+  end
+end
 
 before do
   content_type 'text/html', :charset => 'utf-8'
@@ -27,8 +31,8 @@ get '/:slug' do
 end
 get '/:slug/edit' do
   authenticate_or_request_with_http_basic do |user_name, password|
-    user_name == CONFIG[:username] && Digest::SHA1.hexdigest(password) == CONFIG[:password]
-  end if CONFIG[:use_auth]
+    user_name == Sinatra.options.username && Digest::SHA1.hexdigest(password) == Sinatra.options.password
+  end if Sinatra.options.use_auth
   @page = Page.new(params[:slug])
   erb :edit
 end
