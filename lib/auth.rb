@@ -52,3 +52,10 @@ module Sinatra
     include HttpAuthentication::Basic
   end
 end
+
+
+def authenticate
+  authenticate_or_request_with_http_basic do |user_name, password|
+    user_name == Sinatra.options.username && Digest::SHA1.hexdigest(password) == Sinatra.options.password
+  end if Sinatra.options.use_auth
+end

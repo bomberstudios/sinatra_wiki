@@ -30,13 +30,12 @@ get '/:slug' do
   end
 end
 get '/:slug/edit' do
-  authenticate_or_request_with_http_basic do |user_name, password|
-    user_name == Sinatra.options.username && Digest::SHA1.hexdigest(password) == Sinatra.options.password
-  end if Sinatra.options.use_auth
+  authenticate
   @page = Page.new(params[:slug])
   erb :edit
 end
 post '/:slug/edit' do
+  authenticate
   nice_title = Slugalizer.slugalize(params[:title])
   @page = Page.new(nice_title)
   @page.content = params[:body]
