@@ -1,9 +1,11 @@
-%w(rubygems sinatra erb rdiscount thin).each do |lib|
+%w(rubygems sinatra erb rdiscount thin yaml digest/sha1).each do |lib|
   require lib
 end
 Dir["lib/**/*"].each do |lib|
   require lib
 end
+
+CONFIG = YAML::load(File.read('config.yml')).to_hash
 
 before do
   content_type 'text/html', :charset => 'utf-8'
@@ -24,6 +26,9 @@ get '/:slug' do
   end
 end
 get '/:slug/edit' do
+  authenticate_or_request_with_http_basic do |user_name, password|
+    user_name == CONFIG[:username] && Digest::SHA1.hexdigest(password) == CONFIG[:password]
+  end
   @page = Page.new(params[:slug])
   erb :edit
 end

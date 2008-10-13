@@ -1,0 +1,6 @@
+# Wiki configuration
+--- 
+:username: foo
+# require 'digest/sha1'
+# Digest::SHA1.hexdigest('bar')
+:password: 62cdb7020ff920e5aa642c3d4066950dd1f01f4d
