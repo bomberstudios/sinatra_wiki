@@ -14,7 +14,7 @@ class Page
     File.read(self.path)
   end
   def html
-    RDiscount.new(File.read(self.path)).to_html
+    RDiscount.new(File.read(self.path)).to_html.gsub(/\[\[(\w+)\]\]/,'<a href="\1">\1</a>')
   end
   def content= txt
     File.open(self.path,"w") do |file|
