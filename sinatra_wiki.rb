@@ -30,12 +30,12 @@ get '/:slug' do
   end
 end
 get '/:slug/edit' do
-  authenticate
+  auth
   @page = Page.new(params[:slug])
   erb :edit
 end
 post '/:slug/edit' do
-  authenticate
+  auth
   nice_title = Slugalizer.slugalize(params[:title])
   @page = Page.new(nice_title)
   @page.content = params[:body]
