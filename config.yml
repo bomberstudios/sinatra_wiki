@@ -1,5 +1,6 @@
 # Wiki configuration
 --- 
+:use_auth: false
 :username: foo
 # require 'digest/sha1'
 # Digest::SHA1.hexdigest('bar')
