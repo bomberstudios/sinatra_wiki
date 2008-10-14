@@ -1,4 +1,4 @@
-%w(rubygems sinatra erb rdiscount thin yaml digest/sha1).each do |lib|
+%w(rubygems sinatra erb rdiscount thin yaml digest/sha1 haml).each do |lib|
   require lib
 end
 Dir["lib/**/*.rb"].each do |lib|
@@ -45,4 +45,8 @@ post '/:slug/edit' do
   end
   @page.content = params[:body]
   redirect "/#{nice_title}"
+end
+
+get '/base.css' do
+  sass :base
 end
