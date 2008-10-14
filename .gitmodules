@@ -1,0 +1,3 @@
+[submodule "lib/sinatra-cache"]
+	path = lib/sinatra-cache
+	url = git://github.com/kematzy/sinatra-cache.git
