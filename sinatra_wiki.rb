@@ -1,7 +1,7 @@
 %w(rubygems sinatra erb rdiscount thin yaml digest/sha1).each do |lib|
   require lib
 end
-Dir["lib/**/*"].each do |lib|
+Dir["lib/**/*.rb"].each do |lib|
   require lib
 end
 
@@ -18,7 +18,7 @@ end
 
 get '/' do
   @pages = Dir["public/**/*.txt"]
-  erb :home
+  cache erb :home
 end
 get '/:slug' do
   @page = Page.new(params[:slug])
@@ -26,7 +26,7 @@ get '/:slug' do
     redirect "/#{@page.name}/edit"
   else
     @content = @page.html
-    erb :page
+    cache erb :page
   end
 end
 get '/:slug/edit' do
@@ -38,6 +38,11 @@ post '/:slug/edit' do
   auth
   nice_title = Slugalizer.slugalize(params[:title])
   @page = Page.new(nice_title)
+  if @page.is_new
+    expire_cache "/"
+  else
+    expire_cache "/#{nice_title}"
+  end
   @page.content = params[:body]
   redirect "/#{nice_title}"
 end
