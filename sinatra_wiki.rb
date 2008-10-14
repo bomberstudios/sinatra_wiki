@@ -48,5 +48,5 @@ post '/:slug/edit' do
 end
 
 get '/base.css' do
-  sass :base
+  cache sass :base
 end
