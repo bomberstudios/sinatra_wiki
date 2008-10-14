@@ -10,6 +10,7 @@ It uses Sinatra.rb, and is being built as a learning experiment.
 * erb
 * rdiscount
 * thin
+* haml
 
 
 ## Usage
