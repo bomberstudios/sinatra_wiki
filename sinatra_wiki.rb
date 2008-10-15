@@ -11,6 +11,11 @@ configure do
   end
 end
 
+configure :development do
+  %x(rake expire_cache)
+  set :cache_enabled, false
+end
+
 before do
   content_type 'text/html', :charset => 'utf-8'
   @page = Page.new("home") # Default page

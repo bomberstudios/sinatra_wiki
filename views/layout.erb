@@ -6,10 +6,11 @@
   </head>
   <body>
     <div id="head">
-      <h1>Sinatra Wiki</h1>
-      <a href="/" accesskey="h">Home</a>
+      <a href="/" accesskey="h">Home</a><%= " » #{@page.name}" unless @page.nil? %>
     </div>
+    <div id="content">
     <%= yield %>
+    </div>
     <div id="footer">
       powered by <a href="http://github.com/bomberstudios/sinatra_wiki/tree">Sinatra Wiki</a>, the minimal expression of a wiki thingie
     </div>

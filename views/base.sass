@@ -11,6 +11,63 @@ body
     margin: 0
     padding: 0
 
+#content
+  padding: 1em
+
+  h1, h2, h3, h4, h5, h6
+    color: #06c
+    margin: 1.3em 0 0.3em 0
+    padding: 0
+  h1
+    margin: 0
+
+  blockquote
+    margin: 0
+    padding: 0
+    font:
+      family: Georgia
+      style: italic
+
+    p
+      background-color: #eee
+      padding: 1em
+
+    p:before
+      content: "“"
+      font-size: 2em
+      color: #999
+      vertical-align: -20%
+      margin: 0 0.2em
+
+    p:after
+      content: "”"
+      font-size: 2em
+      color: #999
+      vertical-align: -20%
+      margin: 0 0.2em
+
+  ul, ol
+    margin: 0 0 0.5em 2em
+    padding: 0
+    line-height: 1.4em
+
+  a, a:visited
+    color: #f60
+    text-decoration: none
+  a:hover
+    text-decoration: underline
+
+  pre
+    code
+      display: block
+      padding: 1em
+      color: #0f0
+      background-color: #111
+      font:
+        family: Consolas, Monaco, fixed
+        size: 18px
+
+
 #footer
   font-size: 0.8em
   background-color: #ccc
