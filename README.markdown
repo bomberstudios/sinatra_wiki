@@ -1,4 +1,4 @@
-# sinatra_wiki
+# sinatra\_wiki
 
 sinatra\_wiki is the minimal expression of a wiki.
 
